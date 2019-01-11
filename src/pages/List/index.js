@@ -1,13 +1,15 @@
 import React from 'react';
 import { Table, Modal, Button, Form, Input } from 'antd';
 import { connect } from 'dva';
-
-const FormItem=Form.Item;
+import SampleChart from '../../../src/components/SampleChart';
+const FormItem = Form.Item;
 
 
 class List extends React.Component {
     state = {
         visible: false,
+        statisticVisible: false,
+        id: null,
     }
 
     componentDidMount() {
@@ -15,6 +17,7 @@ class List extends React.Component {
             type: 'cards/queryList',
         });
     }
+
 
     /**
      * 新建窗口显示状态变化
@@ -46,6 +49,21 @@ class List extends React.Component {
         });
     }
 
+    showStatistic = (id) => {
+        this.props.dispatch({
+            type: 'cards/getStatistic',
+            payload: id,
+        });
+        // 更新 state，弹出包含图表的对话框
+        this.setState({ id, statisticVisible: true });
+    };
+
+    handleStatisticCancel = () => {
+        this.setState({
+            statisticVisible: false,
+        });
+    }
+
     columns = [
         {
             title: '名称',
@@ -60,11 +78,20 @@ class List extends React.Component {
             dataIndex: 'url',
             render: value => <a href={value}>{value}</a>,
         },
+        {
+            title: '',
+            dataIndex: '_',
+            render: (_, { id }) => {
+                return (
+                    <Button onClick={() => { this.showStatistic(id); }}>图表</Button>
+                );
+            },
+        },
     ];
 
     render() {
-        const { cardsList, cardsLoading, form: { getFieldDecorator } } = this.props;
-        const { visible } = this.state;
+        const { cardsList, cardsLoading, form: { getFieldDecorator }, statistic } = this.props;
+        const { visible, statisticVisible, id } = this.state;
 
         return (
             <div>
@@ -75,7 +102,7 @@ class List extends React.Component {
                     visible={visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
-                    
+
                 >
                     <Form>
                         <FormItem label="名称">
@@ -98,6 +125,10 @@ class List extends React.Component {
                             )}
                         </FormItem>
                     </Form>
+                </Modal>
+
+                <Modal visible={statisticVisible} footer={null} onCancel={this.handleStatisticCancel}>
+                    <SampleChart data={statistic[id]} />
                 </Modal>
             </div>
         );

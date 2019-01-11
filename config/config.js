@@ -32,7 +32,7 @@ export default {
       routes: [
         {
           path: '/',
-          component: 'Helloworld',
+          component: 'index',
         },
         {
           path: '/helloworld',
