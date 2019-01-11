@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@antv/g2": "^3.4.9",
     "_abab@2.0.0@abab": "^2.0.0",
     "_accepts@1.3.5@accepts": "^1.3.5",
     "_acorn-dynamic-import@3.0.0@acorn-dynamic-import": "^3.0.0",

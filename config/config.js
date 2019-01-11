@@ -19,6 +19,14 @@ export default {
   // routes: pageRoutes,
   routes: [
     {
+      path: '/list',
+      component: './List',
+      routes: [
+        { path: '/list/index', component: '/List/index' },
+      ]
+    },
+
+    {
       path: '/',
       component: './Layout',
       routes: [
@@ -36,12 +44,12 @@ export default {
           routes: [
             { path: '/dashboard/analysis', component: 'Dashboard/Analysis' },
             { path: '/dashboard/monitor', component: 'Dashboard/Monitor' },
-            { path: '/dashboard/workplace', component: 'Dashboard/Workplace' }
+            { path: '/dashboard/workplace', component: 'Dashboard/Workplace' },
           ]
         },
       ],
+    },
 
-    }
   ],
 
   /**
