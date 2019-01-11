@@ -10,6 +10,9 @@ export default () => {
                 </span>
             </p>
             <p>
+                <a href="https://github.com/alvinzxf/Resources/blob/master/img/drawer.png" download="drawer.png">Download file</a>
+            </p>
+            <p>
                 <Button>antd 原始按钮</Button>
             </p>
         </div>
