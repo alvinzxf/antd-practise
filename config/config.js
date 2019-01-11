@@ -16,6 +16,10 @@ export default {
       }
     ],
   ],
+  theme: {
+    "@primary-color": "#30b767",
+  },
+  
   // routes: pageRoutes,
   routes: [
     {
@@ -25,6 +29,24 @@ export default {
         { path: '/list/index', component: '/List/index' },
       ]
     },
+
+    {
+      path: '/css-modules-with-less',
+      component: './css-modules-with-less',
+      routes: [
+        { path: '/css-modules-with-less/index', component: '/css-modules-with-less/index' },
+      ]
+    },
+
+    {
+      path: '/css-modules-with-antd',
+      component: './css-modules-with-antd',
+      routes: [
+        { path: '/css-modules-with-antd/index', component: '/css-modules-with-antd/index' },
+      ]
+    },
+
+   
 
     {
       path: '/',
