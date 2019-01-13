@@ -60,6 +60,10 @@ export default {
           path: '/helloworld',
           component: 'Helloworld'
         },
+        {
+          path: '/demo',
+          component: 'demo'
+        },
         { path: '/puzzlecards', component: 'PuzzlecardSPage' },
         {
           path: './dashboard',
